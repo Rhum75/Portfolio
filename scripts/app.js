@@ -106,23 +106,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Form submission handler (prevents page reload)
+    // Form submission handler
     const contactForm = document.querySelector('form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject')?.value || 'Contact';
-            const message = document.getElementById('message').value;
-            
-            // Show success message
-            alert(`Thank you ${name}! Your message has been received.\n\nSubject: ${subject}\nEmail: ${email}\n\nThis is a demo form. In a real website, this would send your message.`);
-            
-            // Reset form
-            contactForm.reset();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            if (!name || !email || !message) {
+                e.preventDefault();
+                alert('Please fill out all required fields.');
+            }
         });
     }
     
