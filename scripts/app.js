@@ -106,20 +106,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Form submission handler
-    const contactForm = document.querySelector('form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
-            if (!name || !email || !message) {
-                e.preventDefault();
-                alert('Please fill out all required fields.');
-            }
-        });
-    }
-    
     console.log('✅ Portfolio website initialized!');
     console.log('🎯 Navigation system with header animation active');
     console.log('🎨 Smooth transitions enabled');
