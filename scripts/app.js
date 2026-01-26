@@ -106,84 +106,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // ========== CONTACT FORM SUCCESS MESSAGE ==========
-    const contactForm = document.querySelector('form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            // Show success notification
-            showSuccessNotification();
-        });
-    }
-    
     console.log('✅ Portfolio website initialized!');
     console.log('🎯 Navigation system with header animation active');
     console.log('🎨 Smooth transitions enabled');
 });
 
-// Function to show success notification
-function showSuccessNotification() {
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: linear-gradient(135deg, #00d4ff, #0099cc);
-        color: white;
-        padding: 20px 30px;
-        border-radius: 8px;
-        box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
-        font-size: 16px;
-        font-weight: 600;
-        z-index: 10000;
-        animation: slideIn 0.5s ease-out;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    `;
-    
-    notification.innerHTML = `
-        <i class="fas fa-check-circle" style="font-size: 22px;"></i>
-        <span>Message sent successfully! 🎉</span>
-    `;
-    
-    document.body.appendChild(notification);
-    
-    // Auto remove after 4 seconds
-    setTimeout(() => {
-        notification.style.animation = 'slideOut 0.5s ease-in';
-        setTimeout(() => {
-            notification.remove();
-        }, 500);
-    }, 4000);
-}
-
-// Add CSS animations
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideIn {
-        from {
-            transform: translateX(400px);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
+// ========== CONTACT FORM SUCCESS MESSAGE ==========
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.querySelector('form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            // Get form values for the message
+            const name = document.getElementById('name').value;
+            
+            // Show success alert
+            setTimeout(function() {
+                alert(`✅ Success!\n\nHi ${name}! Your message has been sent successfully.\n\nThank you for reaching out. I will get back to you as soon as possible.`);
+            }, 500);
+        });
     }
-    
-    @keyframes slideOut {
-        from {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateX(400px);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(style);
+});
 
 // ========== TESTIMONIALS CAROUSEL NAVIGATION ==========
 function scrollTestimonials(direction) {
